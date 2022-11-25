@@ -1,0 +1,23 @@
+1. select first_name, last_name, email, phone_number, hire_date, department_id from employees where hire_date in (select max(hire_date) from employees group by department_id);
+2. select first_name, last_name, email, phone_number, hire_date, department_id from employees where hire_date in (select min(hire_date) from employees group by department_id);
+3. select first_name, last_name, employee_id, phone_number, salary, department_id from employees where salary in (select min(salary) from employees group by department_id);
+4. select first_name, last_name, employee_id, commission_pct, department_id from employees where department_id = 7 and commission_pct < all ( select commission_pct from employees where department_id = 5 );
+5. select department_id, count(*) from employees group by department_id;
+6. select first_name, last_name, employee_id, email, salary, department_id from employees where hire_date < '2020-01-01';
+7. select first_name, last_name, employee_id, email, salary, department_id from employees where (salary,manager_id) in ( select max(salary),manager_id from employees where manager_id='abcd998773');
+8. select department_id from employees group by department_id having max(salary)<30000;
+9. select department_id,job_id,commission_pct from employees l1 where exists (select * from employees l2 where e1.department_id=l2.department_id and l1.job_id!=l2.job_id and l1.commission_pct < l2.commission_pct); 
+10. select first_name, last_name, employee_id, email, salary, department_id, commission_pct from employees group by manager_id having min(commission_pct);
+11. select count(*) from employees where employee_id in (select manager_id from employees);
+12. select department_id,job_id,commission_pct from employees l1 where exists (select * from employees l2 where e1.department_id=l2.department_id and l1.job_id!=l2.job_id and l1.salary < l2.salary);
+13. select distinct manager_id from employees l1 where exists(select manager_id from employees l2 where l1.employee_id=l2.manager_id and l1.salary>1500);
+14. select distinct manager_id from employees l1 where exists(select manager_id from employees l2 where l1.employee_id=l2.manager_id and l1.commission_pct<15.25);
+15. select distinct manager_id from employees l1 where exists(select manager_id from employees l2 where l1.employee_id=l2.manager_id and l1.salary>=3500);
+
+
+INSERT INTO employees VALUES 
+(1, "Taylor", "Otwell", "otwell@laravel.com", "018181818181", "2020-6-10", 10, 32000, 3.5, "m12", 13),
+(2, "Ryan", "Dahl", "ryan@nodejs.org", "018181818123", "2020-04-22", 11, 15000, 4.5, "m13", 13),
+(3, "Brendan", "Eich", "eich@javascript.com", "018181818124", "2020-05-07", 12, 20000, 3.5, "m13", 14),
+(5, "Evan", "You", "you@vuejs.org", "018181812355", "2020-06-11", 13, 20000, 4.5, "m11", 14),
+(6, "Rasmus", "Lerdorf", "lerdorf@php.net", "018181812359", "2020-06-3", 14, 10000, 3.5, "m12", 15);

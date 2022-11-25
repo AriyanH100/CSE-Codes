@@ -1,0 +1,15 @@
+1. SELECT DISTINCT multiplier FROM users ORDER BY multiplier DESC;
+2. SELECT DISTINCT member_since FROM users ORDER BY member_since;
+3. SELECT id,email FROM users WHERE email LIKE '%com';
+4. SELECT name,email FROM users ORDER BY member_since DESC LIMIT 5;
+5. SELECT COUNT(*) FROM lab_grades;
+6. SELECT COUNT(name) AS user_count FROM users WHERE member_since BETWEEN '2020-05-1' AND '2020-12-31';
+7. SELECT AVG(length(name)) FROM users;
+8. SELECT COUNT(DISTINCT SUBSTRING(email, LOCATE('.',email))) AS number_of_unique_TLDS FROM users;
+9. SELECT name FROM users ORDER BY member_since;
+10. SELECT name FROM users WHERE influence_count=(SELECT MAX(influence_count) FROM users WHERE member_since>'2020-05-31');
+11. SELECT name,MAX(multiplier) FROM users WHERE influence_count<700000;
+12. SELECT DISTINCT multiplier FROM users WHERE influence_count<900000;
+13. SELECT AVG(influence_count) FROM users WHERE member_since<'2020-06-11';
+14. SELECT id,name,email,multipler FROM users WHERE influence_count BETWEEN 700000 and 990000 AND member_since>‘2020-05-18’;
+15. SELECT id,name,email,influence_count FROM users WHERE name LIKE '%u%' AND name LIKE '%o%' AND name LIKE '%v%' AND name LIKE '%n%' AND name LIKE '%s%' AND name LIKE '%m%';

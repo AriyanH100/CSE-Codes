@@ -1,0 +1,10 @@
+1. select C.customer_name,L.loan_number from customer C,loan L,borrower B where L.loan_number=B.loan_number and B.customer_id=C.customer_id and L.branch_name="Downtown";
+2. select branch_name from branch where assets > any(select assets from branch where branch_city="Horseneck");
+3. select B.branch_name,count(account_number) from branch B Left Join account A on B.branch_name=A.branch_name group by branch_name;
+4. select l1.customer_name,l2.customer_name,l1.customer_city from customer l1, customer l2 where  l1.customer_city=l2.customer_city and l1.customer_name!=l2.customer_name group by customer_city;
+5. select branch_name, Sum(balance*0.04) from account group by branch_name;
+6. select A.account_number,A.balance from account A where A.balance in (select max(A.balance) from account A Inner Join branch B on A.branch_name=B.branch_name group by B.branch_city);
+7. select branch_name from branch where assets < all(select assets from branch where branch_city="Brooklyn");
+8. select loan_number, amount, customer_name from (select L.loan_number, L.amount, C.customer_name from loan L,borrower B, customer C where C.customer_id=B.customer_id and B.loan_number=L.loan_number order by L.amount DESC, L.loan_number DESC limit 5) sub order by amount, loan_number DESC;
+9. select C.customer_name from customer C,loan L,borrower B,depositor D,account A where C.customer_id=B.customer_id and B.loan_number=L.loan_number and L.branch_name="Perryridge" and C.customer_id=D.customer_id and D.account_number=A.account_number;
+10. select sum(amount) from loan where loan_number in (select loan_number from borrower where customer_id in (select customer_id from borrower group by customer_id having count(*)>1));
