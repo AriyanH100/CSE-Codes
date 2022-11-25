@@ -1,0 +1,50 @@
+Name: Ariyan Hossain
+ID: 20101099
+Sec: 08
+
+CSE321 LAB
+
+Lab Assignment 1:
+
+Task 1:
+
+sudo su
+touch key1.txt key2.txt key3.txt
+mkdir Box1 Box2
+cp key1.txt key2.txt Box1
+mv key3.txt Box2
+mkdir Box3
+cp -r Box1 Box3
+cd Box3
+cd Box1
+ls -l
+chmod 554 key1.txt 
+chmod 554 key2.txt
+cd ..
+pwd
+ls
+cd .. 
+mv Box3 /root
+rm -r Box1 Box2
+rm key1.txt key2.txt
+
+Task 2:
+
+grep -c Hello hello.txt
+
+Task 3:
+
+A soft link is an actual link to the original file and a hard link is a mirror copy of the original file. If you delete the original file, the soft link has no value but in the case of hard link, deleting the original file will cause no loss in data in the hard link. The hard link will still contain all the data the original data had.
+
+Task 4:
+
+touch firstone.txt
+ln firstone.txt second.txt
+
+Task 5:
+
+ls -a
+
+Task 6:
+
+sed -n '15,21p' a.txt
